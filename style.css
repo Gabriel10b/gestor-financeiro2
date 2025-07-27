@@ -1,0 +1,280 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6;
+    color: #333;
+}
+
+header {
+    background-color: #28a745; /* Verde vibrante */
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+main {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 30px 0;
+}
+
+section {
+    margin-bottom: 30px;
+}
+
+h2, h3 {
+    color: #28a745;
+    border-bottom: 2px solid #e0ffe6;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Saldos */
+.saldos {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.saldo-box {
+    background-color: #e0ffe6;
+    border: 1px solid #28a745;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    flex: 1;
+    min-width: 250px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05);
+}
+
+.saldo-box h3 {
+    color: #28a745;
+    margin-top: 0;
+    border-bottom: none;
+    font-size: 1.2em;
+}
+
+.saldo-box p {
+    font-size: 2.2em;
+    font-weight: bold;
+    color: #0d6e27;
+    margin: 10px 0;
+}
+
+.saldo-box button,
+form button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.saldo-box button:hover,
+form button:hover {
+    background-color: #218838;
+}
+
+.saldo-box input {
+    margin-top: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: calc(100% - 18px); /* Ajusta a largura para padding */
+}
+
+/* Formulários */
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+    align-items: flex-end;
+}
+
+form input[type="text"],
+form input[type="number"],
+form input[type="date"],
+form select {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    min-width: 150px;
+}
+
+form button {
+    padding: 10px 20px;
+}
+
+/* Listas (Dívidas e Extrato) */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+li.divida-paga {
+    background-color: #e6ffe6; /* Verde claro para dívidas pagas */
+    color: #555;
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+li button {
+    background-color: #007bff; /* Azul para marcar como pago */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+li button:hover {
+    background-color: #0056b3;
+}
+
+li .remover-btn {
+    background-color: #dc3545; /* Vermelho para remover */
+}
+
+li .remover-btn:hover {
+    background-color: #c82333;
+}
+
+/* Gráfico */
+.grafico-investimento {
+    text-align: center;
+}
+
+.grafico-investimento canvas {
+    max-width: 400px;
+    margin: 20px auto;
+    display: block; /* Centraliza o canvas */
+}
+
+.legenda-grafico {
+    font-style: italic;
+    color: #666;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    font-size: 0.9em;
+    margin-top: 30px;
+}
+
+/* Responsividade básica */
+@media (max-width: 768px) {
+    .saldos {
+        flex-direction: column;
+    }
+
+    form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    form input, form select, form button {
+        width: 100%;
+        box-sizing: border-box; /* Garante que padding não estoure a largura */
+    }
+}
+
+/* ... (Seu CSS existente) ... */
+
+/* Estilos para o botão de impressão */
+#btnImprimirExtrato {
+    background-color: #007bff; /* Azul para impressão */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+#btnImprimirExtrato:hover {
+    background-color: #0056b3;
+}
+
+
+/* --- Estilos para IMPRESSÃO --- */
+/* Esta seção só será aplicada quando a página for impressa */
+@media print {
+    body * { /* Esconde tudo por padrão */
+        visibility: hidden;
+    }
+
+    #areaExtrato, #areaExtrato * { /* Mostra apenas a área do extrato e seus filhos */
+        visibility: visible;
+    }
+
+    #areaExtrato { /* Posiciona a área do extrato para ocupar a página */
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%; /* Garante que ocupe a largura total da página de impressão */
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    /* Opcional: Estilos adicionais para melhorar a legibilidade na impressão */
+    #areaExtrato h3 {
+        color: black;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 5px;
+        margin-bottom: 15px;
+    }
+
+    #areaExtrato ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    #areaExtrato li {
+        border: 1px solid #eee;
+        padding: 10px;
+        margin-bottom: 5px;
+        background-color: white;
+        box-shadow: none; /* Remove sombras na impressão */
+        display: block; /* Garante que cada item de lista apareça em uma nova linha */
+    }
+
+    /* Esconder o botão de impressão no modo de impressão */
+    #btnImprimirExtrato {
+        display: none;
+    }
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Gestor de Economias</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>💵 Meu Gestor de Economias 💵</h1>
+    </header>
+
+    <main>
+        <section class="dashboard">
+            <h2>Visão Geral</h2>
+            <div class="saldos">
+                <div class="saldo-box">
+                    <h3>Saldo Total</h3>
+                    <p id="saldoTotalDisplay">R$ 0,00</p>
+                    <button id="btnEditarSaldoTotal">Editar Saldo</button>
+                    <input type="number" id="inputSaldoTotal" placeholder="Novo saldo" style="display:none;">
+                    <button id="btnSalvarSaldoTotal" style="display:none;">Salvar</button>
+                </div>
+                <div class="saldo-box">
+                    <h3>Saldo Líquido (Pós-Dívidas)</h3>
+                    <p id="saldoLiquidoDisplay">R$ 0,00</p>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <section class="registro-dividas">
+            <h2>Registro de Dívidas</h2>
+            <form id="formDivida">
+                <input type="text" id="nomeDivida" placeholder="Nome da Dívida" required>
+                <input type="number" id="valorTotalDivida" placeholder="Valor Total (R$)" step="0.01" required>
+                <input type="number" id="valorParcela" placeholder="Valor da Parcela (R$)" step="0.01" required>
+                <input type="number" id="totalParcelas" placeholder="Total de Parcelas" required>
+                <button type="submit">Adicionar Dívida</button>
+            </form>
+
+            <h3>Minhas Dívidas</h3>
+            <ul id="listaDividas">
+                </ul>
+        </section>
+
+        <hr>
+
+        <section class="extrato">
+            <h2>Extrato de Movimentações</h2>
+            <form id="formExtrato">
+                <select id="tipoTransacao">
+                    <option value="entrada">Entrada</option>
+                    <option value="saida">Saída</option>
+                </select>
+                <input type="text" id="descricaoTransacao" placeholder="Descrição" required>
+                <input type="number" id="valorTransacao" placeholder="Valor (R$)" step="0.01" required>
+                <input type="date" id="dataTransacao" required>
+                <button type="submit">Registrar Transação</button>
+            </form>
+
+            <h3>Histórico</h3>
+            <div id="areaExtrato"> <ul id="listaExtrato">
+                    </ul>
+            </div>
+            <button id="btnImprimirExtrato" style="margin-top: 20px;">Imprimir Extrato</button>
+        </section>
+
+        <hr>
+
+        <section class="grafico-investimento">
+            <h2>Sugestão de Distribuição</h2>
+            <canvas id="graficoDistribuicao"></canvas>
+            <p class="legenda-grafico">70% Uso Mensal | 30% Guardar/Investir</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Meu Gestor de Economias. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> </body>
+</html>
